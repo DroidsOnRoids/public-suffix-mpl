@@ -34,3 +34,7 @@ publishing {
         }
     }
 }
+
+val clean by tasks.registering {
+    group = "build"
+}

@@ -1,19 +1,24 @@
 plugins {
     `maven-publish`
+    signing
 }
 
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
 
-            groupId = "pl.droidsonroids"
+            groupId = "pl.droidsonroids.gradle"
             artifactId = "publicsuffix"
-            version = "0.0.1"
+            version = "1.0.0"
 
             pom {
-                name.set("The Public Suffix List")
+                name.set("Public Suffix List")
                 description.set("A \"public suffix\" is one under which Internet users can (or historically could) directly register names")
                 url.set("https://publicsuffix.org/")
+                issueManagement {
+                    system.set("GitHub Issues")
+                    url.set("https://github.com/DroidsOnRoids/public-suffix-mpl")
+                }
                 licenses {
                     license {
                         name.set("MPL-2.0")
@@ -35,6 +40,10 @@ publishing {
     }
 }
 
-val clean by tasks.registering {
-    group = "build"
+signing {
+    sign(publishing.publications["mavenJava"])
+}
+
+tasks.withType(GenerateMavenPom::class) {
+    destination = File(destination.parentFile, "publicsuffix.pom")
 }

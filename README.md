@@ -33,7 +33,7 @@ Usually it is an application module (not top-level nor library).
 Public Suffix List itself is not a Maven library.
 However, it is used by some Maven libraries eg. [okhttp](https://github.com/square/okhttp/issues/4569).
 
-Artifact containg this POM can act as the metadata source for tools automatically discovering library licenses
+Artifact containing this POM can act as the metadata source for tools automatically discovering library licenses
 like [About Libraries](https://github.com/mikepenz/AboutLibraries).
 
 ### Disclaimer
